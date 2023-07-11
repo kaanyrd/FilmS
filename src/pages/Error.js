@@ -1,13 +1,18 @@
 import React from "react";
+import { useRouteError } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
 
 function Error() {
+  // const error = useRouteError();
+
+  // console.log(error);
+
   return (
-    <div>
+    <>
       <MainNavigation />
-      <hr />
-      <h1>Error has occured</h1>
-    </div>
+      {/* <h1>{error.message}</h1> */}
+      <h1>There is an error!</h1>
+    </>
   );
 }
 

@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./pages/Root";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
-import Films from "./pages/Films";
-import NewFilm from "./pages/NewFilm";
+import Films, { loader as filmsLoader } from "./pages/Films";
+import AddFilm from "./pages/AddFilm";
+import FilmDetail from "./pages/FilmDetail";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +14,9 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
-      { path: "films", element: <Films /> },
-      { path: "newfilm", element: <NewFilm /> },
+      { path: "films", element: <Films />, loader: filmsLoader },
+      { path: "films/:filmId", element: <FilmDetail /> },
+      { path: "addfilm", element: <AddFilm /> },
     ],
   },
 ]);

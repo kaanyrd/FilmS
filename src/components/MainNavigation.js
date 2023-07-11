@@ -4,15 +4,15 @@ import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
   return (
-    <div>
-      <ul>
+    <div className={classes.navbar}>
+      <ul className={classes.navbarContent}>
         <li>
           <NavLink
             to="/"
+            end
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
-            end
           >
             Home
           </NavLink>
@@ -29,12 +29,12 @@ function MainNavigation() {
         </li>
         <li>
           <NavLink
-            to="/newfilm"
+            to="/addfilm"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
           >
-            New Film
+            Add Film
           </NavLink>
         </li>
       </ul>
