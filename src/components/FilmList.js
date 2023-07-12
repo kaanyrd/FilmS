@@ -13,7 +13,7 @@ function FilmList({ films }) {
                 <h4 className={classes.age}>+{film.ageLimit}</h4>
                 <h2 className={classes.filmTitle}>{film.title}</h2>
                 <img className={classes.img} src={film.photo} alt="img" />
-                <p className={classes.description}>{film.description}...</p>
+                <h3 className={classes.description}>{film.description}</h3>
               </div>
             </Link>
           </li>

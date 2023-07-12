@@ -1,23 +1,51 @@
 import React from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import classes from "./FilmDetail.module.css";
 
 function FilmDetail() {
   const data = useLoaderData();
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <img src={data.photo} alt="img" />
-      <p>Description: {data.description}</p>
-      <h2>Age Limit: +{data.ageLimit}</h2>
-      <h1>Director: {data.director}</h1>
-      <h1>Genre: {data.genre}</h1>
-      <h1>Imdb: {data.imdb}</h1>
-      <h1>Year: {data.year}</h1>
-      <button>
-        <Link to=".." relative="path">
-          Back
-        </Link>
-      </button>
+    <div className={classes.film}>
+      <div className={classes.content}>
+        <div className={classes.topContent}>
+          <div className={classes.title}>
+            <h1>{data.title}</h1>
+            <p>({data.year})</p>
+          </div>
+          <img className={classes.imgSelf} src={data.photo} alt="img" />
+        </div>
+        <div className={classes.bottomContent}>
+          <div className={classes.topInfo}>
+            <p>Imdb: {data.imdb}</p>
+            <span>●</span>
+            <p>{data.duration}</p>
+          </div>
+          <div className={classes.bottomInfo}>
+            <h4 className={classes.genre}>
+              <p>Genre</p>
+              <p>{data.genre}</p>
+            </h4>
+            <h4 className={classes.director}>
+              <p>Director</p>
+              <p>{data.director}</p>
+            </h4>
+            <h4 className={classes.age}>
+              <p>Age Limit</p>
+              <p>+{data.ageLimit}</p>
+            </h4>
+            <div className={classes.description}>
+              <h3>Description</h3>
+              <h3>{data.description}</h3>
+            </div>
+          </div>
+
+          <button className={classes.backBtn}>
+            <Link to=".." relative="path">
+              Other Films...
+            </Link>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
