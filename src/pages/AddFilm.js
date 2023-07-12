@@ -1,11 +1,11 @@
 import React from "react";
-import Form from "../components/Form";
+import NewForm from "../components/NewForm";
 
 function AddFilm() {
   return (
     <div>
       <h1>AddFilm.js</h1>
-      <Form />
+      <NewForm />
     </div>
   );
 }

@@ -51,7 +51,7 @@ function FilmDetail() {
 }
 
 export default FilmDetail;
-
+// FIXME
 export async function loader({ request, params }) {
   const id = params.filmId;
   const response = await fetch(
