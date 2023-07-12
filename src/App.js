@@ -5,7 +5,7 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Films, { loader as filmsLoader } from "./pages/Films";
 import AddFilm from "./pages/AddFilm";
-import FilmDetail from "./pages/FilmDetail";
+import FilmDetail, { loader as filmDetailLoader } from "./pages/FilmDetail";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "films", element: <Films />, loader: filmsLoader },
-      { path: "films/:filmId", element: <FilmDetail /> },
+      {
+        path: "films/:filmId",
+        element: <FilmDetail />,
+        loader: filmDetailLoader,
+      },
       { path: "addfilm", element: <AddFilm /> },
     ],
   },

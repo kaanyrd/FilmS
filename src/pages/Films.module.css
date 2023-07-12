@@ -1,0 +1,7 @@
+.films {
+  border: 3px solid black;
+  max-width: 1270px;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
