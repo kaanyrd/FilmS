@@ -17,120 +17,156 @@ function NewForm() {
     <div className={classes.form}>
       <h1>Add New Film</h1>
       <Form method="post" className={classes.formContent}>
-        <div className={classes.formControl}>
-          <label htmlFor="title">
-            <h3>Film Title</h3>
-            <p>({30 - title.length})</p>
-          </label>
-          <input
-            id="title"
-            name="title"
-            type="text"
-            onChange={titleHandler}
-            required
-            maxLength="30"
-          />
-        </div>
-        <div className={classes.formControl}>
-          <label htmlFor="description">
-            <h3>Description ({200 - description.length})</h3>
-          </label>
-          <textarea
-            className={classes.textarea}
-            onChange={descriptionHandler}
-            id="description"
-            name="description"
-            maxLength="200"
-            required
-          />
-        </div>
-        <div className={classes.formControl}>
-          <label htmlFor="photo">
-            <h3>Photo (as URL)</h3>
-          </label>
-          <input id="photo" name="photo" type="text" required />
+        <div className={classes.formTop}>
+          <div className={classes.filmDetails}>
+            <div className={classes.formControl}>
+              <label htmlFor="title">
+                <h3>
+                  Film Title{" "}
+                  <span className={classes.maxLength}>
+                    ({30 - title.length})
+                  </span>
+                </h3>
+              </label>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="Name of film..."
+                onChange={titleHandler}
+                required
+                maxLength="30"
+              />
+            </div>
+            <div className={classes.formControl}>
+              <label htmlFor="photo">
+                <h3>Photo</h3>
+              </label>
+              <input
+                id="photo"
+                name="photo"
+                type="text"
+                placeholder="as URL"
+                required
+              />
+            </div>
+          </div>
+          <div className={`${classes.formControl} ${classes.descriptionSide}`}>
+            <label htmlFor="description">
+              <h3>
+                Description{" "}
+                <span className={classes.maxLength}>
+                  ({200 - description.length})
+                </span>
+              </h3>
+            </label>
+            <textarea
+              className={classes.textarea}
+              onChange={descriptionHandler}
+              id="description"
+              name="description"
+              placeholder="Story of film..."
+              maxLength="200"
+              required
+            />
+          </div>
         </div>
         <div className={classes.options}>
-          <div className={classes.optionControl}>
-            <label htmlFor="genre">
-              <h3>Genre</h3>
-            </label>
-            <select id="genre" name="genre" required defaultValue="action">
-              <option value="kids">Kids</option>
-              <option value="drama">Drama</option>
-              <option value="action">Action</option>
-              <option value="western">Western</option>
-              <option value="adventure">Adventure</option>
-              <option value="comedy">Comedy</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="horror">Horror</option>
-              <option value="crime">Crime</option>
-              <option value="science fiction">Science Fiction</option>
-              <option value="thriller">Thriller</option>
-              <option value="history">History</option>
-              <option value="thriller">Thriller</option>
-            </select>
+          <div>
+            <div className={classes.optionControl}>
+              <label htmlFor="genre">
+                <h3>Genre</h3>
+              </label>
+              <select id="genre" name="genre" required defaultValue="action">
+                <option value="kids">Kids</option>
+                <option value="drama">Drama</option>
+                <option value="action">Action</option>
+                <option value="western">Western</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="crime">Crime</option>
+                <option value="science fiction">Science Fiction</option>
+                <option value="thriller">Thriller</option>
+                <option value="history">History</option>
+                <option value="thriller">Thriller</option>
+              </select>
+            </div>
+            <div className={classes.optionControl}>
+              <label htmlFor="year">
+                <h3>Year</h3>
+              </label>
+              <select id="year" name="year" required>
+                {Array.from({ length: 100 }, (_, index) => (
+                  <option key={index} value={2023 - index}>
+                    {2023 - index}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={classes.optionControl}>
+              <label htmlFor="ageLimit">
+                <h3>Age Limit</h3>
+              </label>
+              <select name="ageLimit" id="ageLimit" defaultValue="18" required>
+                <option value="3">+3</option>
+                <option value="7">+7</option>
+                <option value="13">+13</option>
+                <option value="16">+16</option>
+                <option value="18">+18</option>
+              </select>
+            </div>
           </div>
-          <div className={classes.optionControl}>
-            <label htmlFor="year">
-              <h3>Year</h3>
-            </label>
-            <select id="year" name="year" required>
-              {Array.from({ length: 100 }, (_, index) => (
-                <option key={index} value={2023 - index}>
-                  {2023 - index}
-                </option>
-              ))}
-            </select>
+          <div className={classes.filmMoreDetail}>
+            <div className={classes.director}>
+              <label htmlFor="director">
+                <h3>Director</h3>
+              </label>
+              <input
+                maxLength="20"
+                placeholder="Maybe Quentin Tarantino ?"
+                id="director"
+                name="director"
+                type="text"
+              />
+            </div>
+            <div className={classes.filmDetailControl}>
+              <div className={classes.rightDetail}>
+                <div className={`${classes.formControl} ${classes.bottomInfo}`}>
+                  <label htmlFor="imdb">
+                    <h3>Imdb</h3>
+                  </label>
+                  <input
+                    id="imdb"
+                    name="imdb"
+                    type="number"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    placeholder="10"
+                    required
+                  />
+                </div>
+                <div className={`${classes.formControl} ${classes.bottomInfo}`}>
+                  <label htmlFor="duration">
+                    <h3>Duration</h3>
+                  </label>
+                  <input
+                    id="duration"
+                    name="duration"
+                    type="number"
+                    min="1"
+                    max="900"
+                    required
+                    placeholder="As min."
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className={classes.optionControl}>
-            <label htmlFor="ageLimit">
-              <h3>Age Limit</h3>
-            </label>
-            <select name="ageLimit" id="ageLimit" defaultValue="18" required>
-              <option value="3">+3</option>
-              <option value="7">+7</option>
-              <option value="13">+13</option>
-              <option value="16">+16</option>
-              <option value="18">+18</option>
-            </select>
-          </div>
-        </div>
-        <div className={classes.formControl}>
-          <label htmlFor="director">
-            <h3>Director</h3>
-          </label>
-          <input id="director" name="director" type="text" />
         </div>
 
-        <div className={classes.formControl}>
-          <label htmlFor="imdb">
-            <h3>Imdb</h3>
-          </label>
-          <input
-            id="imdb"
-            name="imdb"
-            type="number"
-            min="0"
-            max="10"
-            step="0.1"
-            defaultValue="10"
-            required
-          />
-        </div>
-        <div className={classes.formControl}>
-          <label htmlFor="duration">
-            <h3>Duration (as Minute)</h3>
-          </label>
-          <input
-            id="duration"
-            name="duration"
-            type="number"
-            min="0"
-            max="900"
-            required
-          />
-        </div>
         <div className={classes.submitBtn}>
           <button type="submit">Add Film</button>
         </div>

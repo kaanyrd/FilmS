@@ -6,7 +6,10 @@ import Home from "./pages/Home";
 import Films, { loader as filmsLoader } from "./pages/Films";
 import AddFilm from "./pages/AddFilm";
 import { action as addFilmAction } from "./components/NewForm";
-import FilmDetail, { loader as filmDetailLoader } from "./pages/FilmDetail";
+import FilmDetail, {
+  loader as filmDetailLoader,
+  action as deleteFilmAction,
+} from "./pages/FilmDetail";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,7 @@ const router = createBrowserRouter([
             path: ":filmId",
             element: <FilmDetail />,
             loader: filmDetailLoader,
+            action: deleteFilmAction,
           },
         ],
       },
