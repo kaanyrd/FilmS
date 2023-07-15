@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  useLoaderData,
-  Link,
-  Form,
-  redirect,
-  useSubmit,
-} from "react-router-dom";
+import { useLoaderData, Link, redirect, useSubmit } from "react-router-dom";
 import classes from "./FilmDetail.module.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
