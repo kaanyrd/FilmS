@@ -2,7 +2,7 @@ import React from "react";
 // import { useRouteError } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
 
-function Error() {
+function ErrorPage() {
   // const error = useRouteError();
 
   // console.log(error);
@@ -16,4 +16,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default ErrorPage;

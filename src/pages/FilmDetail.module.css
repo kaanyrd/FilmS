@@ -3,6 +3,7 @@
   max-width: 350px;
   height: 500px;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .film {

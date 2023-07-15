@@ -4,6 +4,7 @@ import classes from "./FilmDetail.module.css";
 
 function FilmDetail() {
   const data = useLoaderData();
+  console.log(data);
   return (
     <div className={classes.film}>
       <div className={classes.content}>
@@ -54,12 +55,14 @@ export default FilmDetail;
 // FIXME
 export async function loader({ request, params }) {
   const id = params.filmId;
+  console.log(id);
   const response = await fetch(
     `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`
   );
   if (!response.ok) {
     // FIXME
   } else {
-    return response;
+    const resData = await response.json();
+    return resData;
   }
 }

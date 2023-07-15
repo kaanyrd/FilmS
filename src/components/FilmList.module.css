@@ -20,6 +20,8 @@
   object-fit: cover;
 }
 .filmTitle {
+  /* height: fit-content; */
+  word-wrap: break-word;
   z-index: 2;
   position: absolute;
   top: 0;
