@@ -4,7 +4,6 @@ import classes from "./Films.module.css";
 
 function Films() {
   const data = useLoaderData();
-  console.log(data);
   return (
     <div className={classes.films}>
       <FilmList films={data} />

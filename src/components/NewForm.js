@@ -47,7 +47,7 @@ function NewForm() {
                 name="photo"
                 type="text"
                 placeholder="as URL"
-                required
+                // required
               />
             </div>
           </div>
@@ -88,7 +88,6 @@ function NewForm() {
                 <option value="horror">Horror</option>
                 <option value="crime">Crime</option>
                 <option value="science fiction">Science Fiction</option>
-                <option value="thriller">Thriller</option>
                 <option value="history">History</option>
                 <option value="thriller">Thriller</option>
               </select>
@@ -144,7 +143,7 @@ function NewForm() {
                     min="0"
                     max="10"
                     step="0.1"
-                    placeholder="10"
+                    placeholder="Imbd point (1-10)"
                     required
                   />
                 </div>

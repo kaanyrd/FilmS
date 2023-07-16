@@ -10,6 +10,7 @@ import FilmDetail, {
   loader as filmDetailLoader,
   action as deleteFilmAction,
 } from "./pages/FilmDetail";
+import EditFilm, { loader as editLoader } from "./pages/EditFilm";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
             loader: filmDetailLoader,
             action: deleteFilmAction,
           },
+          { path: ":filmId/edit", element: <EditFilm />, loader: editLoader },
         ],
       },
       { path: "addfilm", element: <AddFilm />, action: addFilmAction },

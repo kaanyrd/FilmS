@@ -1,25 +1,63 @@
-import React from "react";
-import { useLoaderData, Link, redirect, useSubmit } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import {
+  useLoaderData,
+  Link,
+  redirect,
+  useSubmit,
+  // useNavigation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import classes from "./FilmDetail.module.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import StarIcon from "@mui/icons-material/Star";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import noMovieIcon from "../assets/noMovie3.png";
+import ConfirmModeling from "../components/ConfirmModeling";
 
 function FilmDetail() {
+  // const navigation = useNavigation();
+  // console.log(navigation.state);
+  const params = useParams();
+  const navigate = useNavigate();
   const data = useLoaderData();
   const submit = useSubmit();
+  const [modeling, setModeling] = useState(false);
+  const [removingData, setRemovingData] = useState(false);
 
-  const onDeleteHandler = () => {
-    const proceed = window.confirm("Are you sure?");
-
-    if (proceed) {
-      submit(null, { method: "delete" });
-    }
+  const onModelingHandler = () => {
+    setModeling(true);
   };
+  useEffect(() => {
+    if (removingData === true) {
+      submit(null, { method: "delete" });
+    } else {
+      return;
+    }
+  }, [removingData, submit]);
+
+  const onEditHandler = () => {
+    navigate(`edit`);
+  };
+  console.log(params.filmId);
 
   return (
     <div className={classes.film}>
+      <div>
+        {modeling &&
+          ReactDOM.createPortal(
+            <ConfirmModeling
+              filmName={data.title}
+              modeling={modeling}
+              setModeling={setModeling}
+              setRemovingData={setRemovingData}
+            />,
+            document.getElementById("cofirmModeling")
+          )}
+      </div>
+
       <div className={classes.content}>
         <div className={classes.topContent}>
           <div className={classes.title}>
@@ -27,13 +65,20 @@ function FilmDetail() {
             <p>({data.year})</p>
           </div>
           <div className={classes.imgSide}>
-            <img className={classes.imgSelf} src={data.photo} alt="img" />
+            <img
+              className={classes.imgSelf}
+              src={`${data.photo ? data.photo : noMovieIcon}`}
+              alt="img"
+            />
             <span className={classes.iconSide}>
-              <button onClick={onDeleteHandler}>
+              <button onClick={onModelingHandler}>
                 <DeleteOutlineIcon className={classes.deleteIconSelf} />
               </button>
               <button>
-                <EditIcon className={classes.editIconSelf} />
+                <EditIcon
+                  onClick={onEditHandler}
+                  className={classes.editIconSelf}
+                />
               </button>
             </span>
           </div>
