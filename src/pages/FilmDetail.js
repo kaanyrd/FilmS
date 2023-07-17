@@ -116,7 +116,7 @@ function FilmDetail() {
             </h4>
             <div className={classes.description}>
               <h3>Description</h3>
-              <h3>{data.description}</h3>
+              <h3>{`${data.description}`}</h3>
             </div>
           </div>
 

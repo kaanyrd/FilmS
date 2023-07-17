@@ -20,3 +20,10 @@ img {
 a {
   text-decoration: none;
 }
+
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
+}
+img > alt {
+  text-align: center;
+}

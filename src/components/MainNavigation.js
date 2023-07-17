@@ -6,7 +6,7 @@ function MainNavigation() {
   return (
     <div className={classes.navbar}>
       <ul className={classes.navbarContent}>
-        <li>
+        <li className={classes.links}>
           <NavLink
             to="/"
             end
@@ -17,7 +17,7 @@ function MainNavigation() {
             Home
           </NavLink>
         </li>
-        <li>
+        <li className={classes.links}>
           <NavLink
             to="/films"
             className={({ isActive }) =>
@@ -27,7 +27,7 @@ function MainNavigation() {
             Films
           </NavLink>
         </li>
-        <li>
+        <li className={classes.links}>
           <NavLink
             to="/addfilm"
             className={({ isActive }) =>

@@ -143,7 +143,7 @@ function NewForm() {
                     min="0"
                     max="10"
                     step="0.1"
-                    placeholder="Imbd point (1-10)"
+                    placeholder="(1-10)"
                     required
                   />
                 </div>

@@ -1,24 +1,37 @@
-a {
-  color: black;
+.links > a {
+  background-color: #ffa500;
+  width: 5rem;
+  padding: 0.2rem 0rem;
+  display: inline-block;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.2s linear;
+  color: #4d3200;
+  font-weight: bolder;
 }
-
-a.active {
-  color: red;
-  text-decoration: underline;
+.active {
+  transform: scale(1.15);
+  color: white;
+  outline: 2px solid orange;
+  outline-offset: 0.1rem;
+  transition: all 0.2s linear;
 }
 
 .navbar {
-  border: 3px solid black;
+  background: black;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
 }
 
 .navbarContent {
-  padding: 1rem;
-  border: 3px solid blue;
   max-width: 1270px;
-  width: 90vw;
+  width: 95vw;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 1rem;
+  gap: 1rem 1.3rem;
+  padding: 0.5rem 0;
 }
