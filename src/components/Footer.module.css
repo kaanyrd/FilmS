@@ -16,6 +16,7 @@
 }
 .footerInfo > h1 {
   margin-bottom: 1rem;
+  color: rgb(247, 161, 1);
 }
 .socials {
   display: flex;
@@ -38,6 +39,7 @@
   width: fit-content;
   background-color: transparent;
   color: white;
+  transition: all 0.2s ease-in-out;
 }
 .github:hover {
   color: #f5f5f5;

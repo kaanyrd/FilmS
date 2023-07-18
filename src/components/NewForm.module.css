@@ -3,13 +3,17 @@
   display: grid;
   place-items: center;
 }
+.form > h1 {
+  margin: 1rem auto 0 auto;
+}
 .formContent {
-  border: 2px solid black;
+  border: 2px solid orange;
   border-radius: 10px;
   max-width: 1270px;
   width: 90vw;
   margin: 1rem auto;
   padding: 1rem;
+  background-color: rgb(255, 255, 255);
 }
 input {
   padding: 0 0.2rem;
@@ -71,13 +75,17 @@ input {
 .submitBtn > button {
   padding: 0.3rem 0.7rem;
   border-radius: 5px;
-  background: #d1d2d2;
+  background: orange;
+  color: black;
+  font-weight: bolder;
   border: none;
   cursor: pointer;
   transition: all 0.1s ease-in;
+  width: 7rem;
+  height: 2rem;
 }
 .submitBtn > button:hover {
-  background: #a1a1a1;
+  background: rgb(251, 175, 34);
 }
 .bottomInfo {
   text-align: center;

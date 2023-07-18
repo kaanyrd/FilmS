@@ -10,14 +10,47 @@
   max-width: 350px;
   height: 500px;
   border: 3px solid black; */
-  border: 3px solid black;
+  /* border: 3px solid black; */
   margin: 0 auto 0.5rem auto;
   max-width: 350px;
   height: 500px;
   position: relative;
   border-radius: 15px;
 }
-
+.content {
+}
+.topContent {
+  /* border: 5px solid orange; */
+  border-radius: 10px;
+  /* background-color: rgb(255, 255, 255); */
+  /* background-color: #fff; */
+}
+.bottomContent {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  background: orange;
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  width: 7rem;
+  height: 2rem;
+}
+.backBtn:hover {
+  background: rgb(251, 175, 34);
+}
+.backBtn > a {
+  color: black;
+}
 .imdbSide {
   display: flex;
   align-items: center;
@@ -78,7 +111,7 @@
 }
 
 .content {
-  border: 3px solid black;
+  /* border: 3px solid black; */
   padding: 1rem 0;
 }
 .title {
@@ -131,19 +164,6 @@
 .description > * {
   /* border: 3px solid red; */
 }
-.backBtn {
-  display: flex;
-  margin: 0 auto;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-}
-.backBtn:hover {
-  background: #d9d9d9;
-}
 
 @media screen and (min-width: 768px) {
   .content {
@@ -180,8 +200,8 @@
   }
 }
 .content {
-  border: 3px solid red;
+  /* border: 3px solid red; */
 }
 .content > * {
-  border: 3px solid black;
+  /* border: 3px solid black; */
 }

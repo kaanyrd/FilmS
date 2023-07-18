@@ -17,7 +17,7 @@ function ConfirmModeling({ modeling, setModeling, setRemovingData, filmName }) {
       <div className={classes.modelingContent}>
         <h1>
           Do you want to remove{" "}
-          <span className={classes.filmName}>{filmName}</span>?
+          <span className={classes.filmName}>"{filmName}"</span>?
         </h1>
         <div className={classes.buttons}>
           <button className={classes.confirmButtons} onClick={yesClickHandler}>

@@ -2,7 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
-import Home from "./pages/Home";
+import Home, { loader as bannerLoader } from "./pages/Home";
 import Films, { loader as filmsLoader } from "./pages/Films";
 import AddFilm from "./pages/AddFilm";
 import { action as addFilmAction } from "./components/NewForm";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <Root />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home />, loader: bannerLoader },
       {
         path: "films",
         children: [

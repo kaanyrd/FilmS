@@ -67,16 +67,20 @@ input {
   margin-top: 1.5rem;
 }
 .submitBtn > button {
-  padding: 0.5rem 0.7rem;
+  transition: all 0.1s ease-in;
+  padding: 0.3rem 0.7rem;
   border-radius: 5px;
-  background: #d1d2d2;
+  background: orange;
+  color: black;
+  font-weight: bolder;
   border: none;
   cursor: pointer;
-  width: 6rem;
   transition: all 0.1s ease-in;
+  width: 7rem;
+  height: 2rem;
 }
 .submitBtn > button:hover {
-  background: #a1a1a1;
+  background: rgb(252, 177, 38);
 }
 .bottomInfo {
   text-align: center;
@@ -163,7 +167,7 @@ input {
     border-radius: 10px;
     height: 100%;
     object-fit: cover;
-    transform: rotate(-10deg);
+    transform: rotate(-5deg);
     /* transform: rotateX(70deg); */
     box-shadow: 0px 5px 15px black;
   }
