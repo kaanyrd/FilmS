@@ -78,8 +78,9 @@
 }
 .deleteIconSelf {
   cursor: pointer;
-  color: rgb(254, 34, 34);
-  border: 2px solid rgb(254, 34, 34);
+  color: white;
+  border: 2px solid white;
+  background-color: rgb(254, 34, 34);
   border-radius: 5px;
   display: inline-block;
   transition: all 0.2s ease-in-out;
@@ -93,12 +94,13 @@
 .editIconSelf {
   transition: all 0.2s ease-in-out;
   display: inline-block;
-  color: rgb(53, 53, 255);
-  border: 2px solid rgb(53, 53, 255);
+  color: white;
+  border: 2px solid white;
   cursor: pointer;
   border-radius: 5px;
   transform: scale(1.5);
   backdrop-filter: blur(5px);
+  background-color: blue;
 }
 .editIconSelf:hover {
   transform: scale(1.6);

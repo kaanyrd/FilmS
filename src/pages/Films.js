@@ -4,6 +4,7 @@ import classes from "./Films.module.css";
 
 function Films() {
   const data = useLoaderData();
+
   return (
     <div className={classes.films}>
       <FilmList films={data} />
@@ -30,5 +31,5 @@ export async function loader() {
       ...data[id],
     });
   }
-  return films;
+  return films.reverse();
 }

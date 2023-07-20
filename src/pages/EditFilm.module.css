@@ -1,6 +1,7 @@
 .form {
   display: grid;
   place-items: center;
+  margin-top: 1.5rem;
 }
 .formContent {
   border: 2px solid black;
@@ -22,6 +23,7 @@ input {
 .maxLength {
   font-size: 0.8rem;
   color: rgb(106, 106, 106);
+  word-wrap: break-word;
 }
 .formControl {
   display: flex;

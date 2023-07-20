@@ -71,15 +71,14 @@ function FilmDetail() {
               alt="img"
             />
             <span className={classes.iconSide}>
-              <button onClick={onModelingHandler}>
-                <DeleteOutlineIcon className={classes.deleteIconSelf} />
-              </button>
-              <button>
-                <EditIcon
-                  onClick={onEditHandler}
-                  className={classes.editIconSelf}
-                />
-              </button>
+              <DeleteOutlineIcon
+                onClick={onModelingHandler}
+                className={classes.deleteIconSelf}
+              />
+              <EditIcon
+                onClick={onEditHandler}
+                className={classes.editIconSelf}
+              />
             </span>
           </div>
         </div>
