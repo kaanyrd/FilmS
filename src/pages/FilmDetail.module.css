@@ -1,29 +1,19 @@
 .imgSelf {
+  -o-object-fit: cover;
   object-fit: cover;
   height: 100%;
   width: 100%;
   border-radius: 10px;
 }
 .imgSide {
-  /* display: block;
-  margin: 0 auto;
-  max-width: 350px;
-  height: 500px;
-  border: 3px solid black; */
-  /* border: 3px solid black; */
   margin: 0 auto 0.5rem auto;
   max-width: 350px;
   height: 500px;
   position: relative;
   border-radius: 15px;
 }
-.content {
-}
 .topContent {
-  /* border: 5px solid orange; */
   border-radius: 10px;
-  /* background-color: rgb(255, 255, 255); */
-  /* background-color: #fff; */
 }
 .bottomContent {
   padding: 1rem;
@@ -54,6 +44,7 @@
 .imdbSide {
   display: flex;
   align-items: center;
+  -moz-column-gap: 0.2rem;
   column-gap: 0.2rem;
 }
 .star {
@@ -63,6 +54,7 @@
 .hourSide {
   display: flex;
   align-items: center;
+  -moz-column-gap: 0.2rem;
   column-gap: 0.2rem;
 }
 .iconSide {
@@ -71,6 +63,7 @@
   left: 15px;
   display: flex;
   align-items: center;
+  -moz-column-gap: 1rem;
   column-gap: 1rem;
 }
 .iconSide > button {
@@ -84,6 +77,7 @@
   border-radius: 5px;
   display: inline-block;
   transition: all 0.2s ease-in-out;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transform: scale(1.5);
 }
@@ -99,6 +93,7 @@
   cursor: pointer;
   border-radius: 5px;
   transform: scale(1.5);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   background-color: blue;
 }
@@ -111,9 +106,7 @@
   width: 90vw;
   margin: 1rem auto;
 }
-
 .content {
-  /* border: 3px solid black; */
   padding: 1rem 0;
 }
 .title {
@@ -121,22 +114,17 @@
   padding: 0.5rem 0;
 }
 .topInfo {
-  /* border: 3px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 0;
+  -moz-column-gap: 0.4rem;
   column-gap: 0.4rem;
   flex-wrap: wrap;
-  /* background-color: #d0d0d0; */
 }
 .bottomInfo {
   padding: 0 0.2rem;
 }
-.topInfo > * {
-  /* border: 3px solid black; */
-}
-
 .genre,
 .director,
 .age {
@@ -156,15 +144,11 @@
   margin: 0.5rem 0;
   border-radius: 10px;
   text-align: left;
-  /* line-height: 1.5rem; */
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
   padding-bottom: 1rem;
   padding: 0.2rem 0.2rem 0.75rem 0.2rem;
-}
-.description > * {
-  /* border: 3px solid red; */
 }
 
 @media screen and (min-width: 768px) {
@@ -200,10 +184,4 @@
     top: 0;
     left: 0;
   }
-}
-.content {
-  /* border: 3px solid red; */
-}
-.content > * {
-  /* border: 3px solid black; */
 }

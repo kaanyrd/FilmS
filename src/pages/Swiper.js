@@ -7,8 +7,6 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 
 import "./Swiper.css";
-
-// import required modules
 import { EffectCards } from "swiper/modules";
 
 export default function Banner({ data }) {
@@ -25,7 +23,7 @@ export default function Banner({ data }) {
         className="mySwiper"
       >
         {data?.map((film) => (
-          <SwiperSlide className="cardSelf">
+          <SwiperSlide className="cardSelf" key={film.id}>
             <div>
               <p className="filmTitle">{film.title}</p>
               <img className="imgSelf" src={film.photo} alt={film.title} />

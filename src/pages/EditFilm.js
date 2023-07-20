@@ -30,7 +30,7 @@ function EditFilm() {
 
   const photoChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setPhoto(e.target.value);
   };
 

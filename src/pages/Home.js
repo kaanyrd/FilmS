@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     setLastFilms(data.slice(-3).reverse());
   }, [data]);
-  console.log(lastFilms);
+  // console.log(lastFilms);
 
   return (
     <div className={classes.banner}>

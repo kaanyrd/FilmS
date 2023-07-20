@@ -22,12 +22,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  -moz-column-gap: 1rem;
   column-gap: 1rem;
 }
 .copyright {
   display: flex;
   align-items: center;
   justify-content: center;
+  -moz-column-gap: 0.2rem;
   column-gap: 0.2rem;
   margin-bottom: 1rem;
 }
@@ -36,6 +38,8 @@
 .instagram,
 .twitter,
 .yahoo {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   background-color: transparent;
   color: white;

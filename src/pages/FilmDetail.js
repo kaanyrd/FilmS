@@ -5,9 +5,7 @@ import {
   Link,
   redirect,
   useSubmit,
-  // useNavigation,
   useNavigate,
-  useParams,
 } from "react-router-dom";
 import classes from "./FilmDetail.module.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -18,9 +16,6 @@ import noMovieIcon from "../assets/noMovie3.png";
 import ConfirmModeling from "../components/ConfirmModeling";
 
 function FilmDetail() {
-  // const navigation = useNavigation();
-  // console.log(navigation.state);
-  const params = useParams();
   const navigate = useNavigate();
   const data = useLoaderData();
   const submit = useSubmit();
@@ -41,7 +36,6 @@ function FilmDetail() {
   const onEditHandler = () => {
     navigate(`edit`);
   };
-  console.log(params.filmId);
 
   return (
     <div className={classes.film}>

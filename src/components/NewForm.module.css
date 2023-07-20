@@ -92,11 +92,7 @@ input {
   display: flex;
   justify-content: center;
 }
-.options {
-  /* border: 3px solid black; */
-}
 .options > * {
-  /* border: 3px solid red; */
   margin-top: 0.725rem;
 }
 .director {
@@ -118,6 +114,7 @@ input {
     /* border: 3px solid black; */
     display: grid;
     grid-template-columns: 1fr 1fr;
+    -moz-column-gap: 2rem;
     column-gap: 2rem;
   }
   .filmDetails {
@@ -125,9 +122,6 @@ input {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
-  }
-  .optionControl {
-    /* border: 3px solid red; */
   }
   .formTop {
     display: grid;
@@ -142,29 +136,16 @@ input {
 }
 
 @media screen and (min-width: 768px) {
-  .filmDetailControl {
-  }
-  .filmDetailControl > * {
-  }
   .rightDetail {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
   }
-  .rightDetail > * {
+  .bottomInfo {
+    text-align: left;
   }
 }
 @media screen and (min-width: 978px) {
-  /* .filmMoreDetail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    column-gap: 3rem;
-    padding: 0 1rem;
-  } */
-  .filmMoreDetail > * {
-    /* border: 3px solid red; */
-  }
   .formControl {
     margin-top: 0;
     row-gap: 0rem;
@@ -177,6 +158,6 @@ input {
     padding-top: 0.2rem;
   }
   .bottomInfo > input {
-    text-align: center;
+    text-align: left;
   }
 }
