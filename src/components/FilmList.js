@@ -7,7 +7,7 @@ function FilmList({ films }) {
   const [filmTypes, setFilmTypes] = useState("");
   const [filmNames, setFilmNames] = useState("");
   const [filteredFilms, setFilteredFilms] = useState(films);
-  const [currentPage, setCurrenPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const filmsPerPage = 15;
   const indexLastFilm = currentPage * filmsPerPage;
   const indexFirstFilm = indexLastFilm - filmsPerPage;
@@ -18,13 +18,14 @@ function FilmList({ films }) {
 
   const nextPage = () => {
     if (currentPage < totalPages) {
-      setCurrenPage(currentPage + 1);
+      setCurrentPage(currentPage + 1);
       window.scrollTo(0, 0);
     }
   };
+
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrenPage(currentPage - 1);
+      setCurrentPage(currentPage - 1);
       window.scrollTo(0, 0);
     }
   };
@@ -46,9 +47,12 @@ function FilmList({ films }) {
 
   const onFilmTypeChangeHandler = (e) => {
     setFilmTypes(e.target.value);
+    setCurrentPage(1);
   };
+
   const onFilmNameChangeHandler = (e) => {
     setFilmNames(e.target.value);
+    setCurrentPage(1);
   };
 
   return (
@@ -122,8 +126,12 @@ function FilmList({ films }) {
       }
       {currentFilms.length > 0 ? (
         <div className={classes.pages}>
-          <button onClick={prevPage}>Previous</button>
-          <button onClick={nextPage}>Next</button>
+          <button onClick={prevPage} disabled={currentPage === 1}>
+            Previous
+          </button>
+          <button onClick={nextPage} disabled={currentPage === totalPages}>
+            Next
+          </button>
         </div>
       ) : (
         ""
