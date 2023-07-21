@@ -13,11 +13,17 @@ function ErrorPage() {
     <>
       <MainNavigation />
       <main className={classes.errorContent}>
-        <h1>Something went wrong!</h1>
-        <h1>{error?.data?.title}</h1>
-        <h3>{error?.data?.message}</h3>
-        {error.status && <h3>(Error Code:{error?.status})</h3>}
-        <Link to="/">Home</Link>
+        <div className={classes.errorInformation}>
+          <h1>SOMETHING WENT WRONG</h1>
+          <h2>{error?.data?.title}</h2>
+          <h3>{error?.data?.message}</h3>
+          {error.status && <h3>(Error Code:{error?.status})</h3>}
+          <li>
+            <Link to="/" className={classes.link}>
+              Go To Home
+            </Link>
+          </li>
+        </div>
       </main>
       <Footer />
     </>

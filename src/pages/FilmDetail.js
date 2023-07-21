@@ -52,75 +52,85 @@ function FilmDetail() {
             document.getElementById("cofirmModeling")
           )}
       </div>
-
-      <div className={classes.content}>
-        <div className={classes.topContent}>
-          <div className={classes.title}>
-            <h1>{data?.title}</h1>
-            <p>({data?.year})</p>
-          </div>
-          <div className={classes.imgSide}>
-            <img
-              className={classes.imgSelf}
-              src={`${data?.photo ? data.photo : noMovieIcon}`}
-              alt="img"
-            />
-            <span className={classes.iconSide}>
-              <DeleteOutlineIcon
-                onClick={onModelingHandler}
-                className={classes.deleteIconSelf}
+      {data ? (
+        <div className={classes.content}>
+          <div className={classes.topContent}>
+            <div className={classes.title}>
+              <h1>{data?.title}</h1>
+              <p>({data?.year})</p>
+            </div>
+            <div className={classes.imgSide}>
+              <img
+                className={classes.imgSelf}
+                src={data.photo.length === 0 ? noMovieIcon : data.photo}
+                alt="img"
               />
-              <EditIcon
-                onClick={onEditHandler}
-                className={classes.editIconSelf}
-              />
-            </span>
-          </div>
-        </div>
-        <div className={classes.bottomContent}>
-          <div className={classes.topInfo}>
-            <p className={classes.imdbSide}>
-              Imdb: {data?.imdb} <StarIcon className={classes.star} />
-            </p>
-            <span>/</span>
-            <p className={classes.hourSide}>
-              <span>
-                {Math.floor(data?.duration / 60)}h
-                {`${
-                  data?.duration % 60 === 0
-                    ? ""
-                    : ` - ${data?.duration % 60} mins`
-                }`}
+              <span className={classes.iconSide}>
+                <DeleteOutlineIcon
+                  onClick={onModelingHandler}
+                  className={classes.deleteIconSelf}
+                />
+                <EditIcon
+                  onClick={onEditHandler}
+                  className={classes.editIconSelf}
+                />
               </span>
-              <QueryBuilderIcon />
-            </p>
-          </div>
-          <div className={classes.bottomInfo}>
-            <h4 className={classes.genre}>
-              <p>Genre</p>
-              <p>{data?.genre}</p>
-            </h4>
-            <h4 className={classes.director}>
-              <p>Director</p>
-              <p>{data?.director}</p>
-            </h4>
-            <h4 className={classes.age}>
-              <p>Age Limit</p>
-              <p>+{data?.ageLimit}</p>
-            </h4>
-            <div className={classes.description}>
-              <h3>Description</h3>
-              <h3>{`${data?.description}`}</h3>
             </div>
           </div>
+          <div className={classes.bottomContent}>
+            <div className={classes.topInfo}>
+              <p className={classes.imdbSide}>
+                Imdb: {data?.imdb} <StarIcon className={classes.star} />
+              </p>
+              <span>/</span>
+              <p className={classes.hourSide}>
+                <span>
+                  {Math.floor(data?.duration / 60)}h
+                  {`${
+                    data?.duration % 60 === 0
+                      ? ""
+                      : ` - ${data?.duration % 60} mins`
+                  }`}
+                </span>
+                <QueryBuilderIcon />
+              </p>
+            </div>
+            <div className={classes.bottomInfo}>
+              <h4 className={classes.genre}>
+                <p>Genre</p>
+                <p>{data?.genre}</p>
+              </h4>
+              <h4 className={classes.director}>
+                <p>Director</p>
+                <p>{data?.director}</p>
+              </h4>
+              <h4 className={classes.age}>
+                <p>Age Limit</p>
+                <p>+{data?.ageLimit}</p>
+              </h4>
+              <div className={classes.description}>
+                <h3>Description</h3>
+                <h3>{`${data?.description}`}</h3>
+              </div>
+            </div>
 
-          <button className={classes.backBtn}>
-            <Link to=".." relative="path">
-              Other Films...
-            </Link>
-          </button>
+            <button className={classes.backBtn}>
+              <Link to=".." relative="path">
+                Other Films...
+              </Link>
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={classes.notFound}>
+          <div className={classes.notFoundContent}>
+            <h1>PAGE NOT FOUND</h1>
+            <Link className={classes.notFoundLink} to="/">
+              Go Home
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -138,7 +148,7 @@ export async function loader({ request, params }) {
   } catch (error) {
     throw json({
       title: "AN ERROR HAS OCCURRED!",
-      message: "Film detail coudln't find.",
+      message: "Film detail couldn't find.",
     });
   }
 }
@@ -146,7 +156,7 @@ export async function loader({ request, params }) {
 export async function action({ request, params }) {
   try {
     const id = params.filmId;
-    const response = await fetch(
+    await fetch(
       `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
       {
         method: request.method,

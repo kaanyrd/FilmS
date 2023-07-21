@@ -20,12 +20,14 @@ function EditFilm() {
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    if (photo.length > 1) {
+    if (data.photo && photo) {
       setMovieImg(photo);
-    } else if (photo.length === 0 && data.photo) {
-      setMovieImg(data.photo);
-    } else {
+    } else if (!data.photo && !photo) {
       setMovieImg(filmIcon);
+    } else if (!data.photo && photo) {
+      setMovieImg(photo);
+    } else if (data.photo && !photo) {
+      setMovieImg(data.photo);
     }
   }, [photo, data.photo]);
 
@@ -278,7 +280,7 @@ export async function action({ request, params }) {
       imdb: formData.get("imdb").trim(),
       duration: formData.get("duration").trim(),
     };
-    const response = await fetch(
+    await fetch(
       `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
       {
         method: request.method,

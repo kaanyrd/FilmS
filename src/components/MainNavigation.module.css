@@ -31,9 +31,12 @@
   width: 90vw;
   max-width: 1270px;
   margin: 0 auto;
+  padding: 0.5rem 0;
 }
 .navbarContent {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem 1.3rem;
   padding: 0.5rem 0;
 }
@@ -50,5 +53,6 @@
   .content {
     justify-content: space-between;
     flex-direction: row;
+    padding: 0;
   }
 }

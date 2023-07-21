@@ -1,3 +1,24 @@
 .errorContent {
   min-height: calc(100vh - 5rem);
+  /* border: 3px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.errorContent > * {
+  /* border: 3px solid black; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 0.5rem;
+}
+.link {
+  background-color: orange;
+  color: black;
+  font-weight: bolder;
+  padding: 0.2rem 0.7rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+  border-radius: 5px;
 }

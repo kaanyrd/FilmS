@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "./Swiper.css";
 import { EffectCards } from "swiper/modules";
+import noMovieIcon from "../assets/noMovie3.png";
 
 export default function Banner({ data }) {
   return (
@@ -22,7 +23,11 @@ export default function Banner({ data }) {
           <SwiperSlide className="cardSelf" key={film.id}>
             <div>
               <p className="filmTitle">{film.title}</p>
-              <img className="imgSelf" src={film.photo} alt={film.title} />
+              <img
+                className="imgSelf"
+                src={film.photo.length === 0 ? noMovieIcon : film.photo}
+                alt={film.title}
+              />
               <p className="filmDescription">{film.description}</p>
             </div>
           </SwiperSlide>

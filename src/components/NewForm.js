@@ -192,16 +192,13 @@ export async function action({ request, params }) {
       duration: formData.get("duration").trim(),
     };
 
-    const response = await fetch(
-      `https://films-3c1db-default-rtdb.firebaseio.com/films.json`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(filmData),
-      }
-    );
+    await fetch(`https://films-3c1db-default-rtdb.firebaseio.com/films.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(filmData),
+    });
 
     return redirect("/films");
   } catch (error) {
