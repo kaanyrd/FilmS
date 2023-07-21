@@ -19,11 +19,13 @@ function FilmList({ films }) {
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrenPage(currentPage + 1);
+      window.scrollTo(0, 0);
     }
   };
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrenPage(currentPage - 1);
+      window.scrollTo(0, 0);
     }
   };
 

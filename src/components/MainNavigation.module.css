@@ -23,15 +23,32 @@
   display: flex;
   align-items: center;
 }
-
-.navbarContent {
-  max-width: 1270px;
-  width: 95vw;
-  margin: 0 auto;
+.content {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 90vw;
+  max-width: 1270px;
+  margin: 0 auto;
+}
+.navbarContent {
+  display: flex;
   gap: 1rem 1.3rem;
   padding: 0.5rem 0;
+}
+.title {
+  color: white;
+}
+.S {
+  color: orange;
+}
+@media screen and (min-width: 578px) {
+  .navbar {
+    flex-direction: row;
+  }
+  .content {
+    justify-content: space-between;
+    flex-direction: row;
+  }
 }
