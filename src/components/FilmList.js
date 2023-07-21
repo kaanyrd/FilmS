@@ -7,6 +7,25 @@ function FilmList({ films }) {
   const [filmTypes, setFilmTypes] = useState("");
   const [filmNames, setFilmNames] = useState("");
   const [filteredFilms, setFilteredFilms] = useState(films);
+  const [currentPage, setCurrenPage] = useState(1);
+  const filmsPerPage = 15;
+  const indexLastFilm = currentPage * filmsPerPage;
+  const indexFirstFilm = indexLastFilm - filmsPerPage;
+  const currentFilms = filteredFilms.slice(indexFirstFilm, indexLastFilm);
+
+  const allFilmsLength = filteredFilms.length;
+  const totalPages = Math.ceil(allFilmsLength / filmsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrenPage(currentPage + 1);
+    }
+  };
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrenPage(currentPage - 1);
+    }
+  };
 
   useEffect(() => {
     const filteredByType = films.filter(
@@ -31,7 +50,7 @@ function FilmList({ films }) {
   };
 
   return (
-    <>
+    <div className={classes.content}>
       <form className={classes.typeForms}>
         <div className={classes.search}>
           <input
@@ -61,9 +80,9 @@ function FilmList({ films }) {
       <div className={classes.divider}></div>
       {
         <div>
-          {filteredFilms.length > 0 ? (
+          {currentFilms.length > 0 ? (
             <ul className={classes.list}>
-              {filteredFilms?.map((film) => (
+              {currentFilms?.map((film) => (
                 <li key={film.id}>
                   <Link to={film.id}>
                     <div className={classes.film}>
@@ -99,7 +118,15 @@ function FilmList({ films }) {
           )}
         </div>
       }
-    </>
+      {currentFilms.length > 0 ? (
+        <div className={classes.pages}>
+          <button onClick={prevPage}>Previous</button>
+          <button onClick={nextPage}>Next</button>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
   );
 }
 
