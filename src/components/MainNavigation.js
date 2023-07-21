@@ -1,14 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
   return (
     <div className={classes.navbar}>
       <div className={classes.content}>
-        <h1 className={classes.title}>
-          Film<span className={classes.S}>S</span>
-        </h1>
+        <Link to="/">
+          <h1 className={classes.title}>
+            Film<span className={classes.S}>S</span>
+          </h1>
+        </Link>
         <ul className={classes.navbarContent}>
           <li className={classes.links}>
             <NavLink

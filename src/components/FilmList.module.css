@@ -1,7 +1,7 @@
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 2rem 1rem;
 }
 .list > * {
   height: 350px;
@@ -26,6 +26,8 @@
 .img > img {
   transition: all 0.2s ease-in-out;
   height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 .filmTitle {
   word-wrap: break-word;
