@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, json, redirect } from "react-router-dom";
 import classes from "./NewForm.module.css";
 
 function NewForm() {
@@ -177,33 +177,37 @@ function NewForm() {
 export default NewForm;
 
 export async function action({ request, params }) {
-  const formData = await request.formData();
+  try {
+    const formData = await request.formData();
 
-  const filmData = {
-    title: formData.get("title").trim(),
-    description: formData.get("description").trim(),
-    photo: formData.get("photo").trim(),
-    genre: formData.get("genre").trim(),
-    director: formData.get("director").trim(),
-    year: formData.get("year").trim(),
-    ageLimit: formData.get("ageLimit").trim(),
-    imdb: formData.get("imdb").trim(),
-    duration: formData.get("duration").trim(),
-  };
+    const filmData = {
+      title: formData.get("title").trim(),
+      description: formData.get("description").trim(),
+      photo: formData.get("photo").trim(),
+      genre: formData.get("genre").trim(),
+      director: formData.get("director").trim(),
+      year: formData.get("year").trim(),
+      ageLimit: formData.get("ageLimit").trim(),
+      imdb: formData.get("imdb").trim(),
+      duration: formData.get("duration").trim(),
+    };
 
-  const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films.json`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(filmData),
-    }
-  );
+    const response = await fetch(
+      `https://films-3c1db-default-rtdb.firebaseio.com/films.json`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(filmData),
+      }
+    );
 
-  if (!response.ok) {
-    // FIXME
+    return redirect("/films");
+  } catch (error) {
+    throw json({
+      title: "AN ERROR HAS OCCURRED!",
+      message: "Form couldn't submit",
+    });
   }
-  return redirect("/films");
 }

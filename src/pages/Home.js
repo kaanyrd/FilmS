@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 import classes from "./Home.module.css";
 import Banner from "./Swiper";
 
@@ -23,21 +23,24 @@ function Home() {
 export default Home;
 
 export async function loader() {
-  const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films.json`
-  );
-  if (!response.ok) {
-    // FIXME
-    // throw json({ message: "Films can not fetched!", status: 500 });
-  }
-  const data = await response.json();
-  const films = [];
+  try {
+    const response = await fetch(
+      `https://films-3c1db-default-rtdb.firebaseio.com/films.json`
+    );
+    const data = await response.json();
+    const films = [];
 
-  for (const id in data) {
-    films.push({
-      id: id.toString(),
-      ...data[id],
+    for (const id in data) {
+      films.push({
+        id: id.toString(),
+        ...data[id],
+      });
+    }
+    return films;
+  } catch (error) {
+    throw json({
+      title: "AN ERROR HAS OCCURRED!",
+      message: "Data couldn't fetched!",
     });
   }
-  return films;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Form,
+  json,
   redirect,
   useLoaderData,
   useNavigate,
@@ -262,32 +263,36 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ request, params }) {
-  const id = params.filmId;
-  const formData = await request.formData();
+  try {
+    const id = params.filmId;
+    const formData = await request.formData();
 
-  const filmData = {
-    title: formData.get("title").trim(),
-    description: formData.get("description").trim(),
-    photo: formData.get("photo").trim(),
-    genre: formData.get("genre").trim(),
-    director: formData.get("director").trim(),
-    year: formData.get("year").trim(),
-    ageLimit: formData.get("ageLimit").trim(),
-    imdb: formData.get("imdb").trim(),
-    duration: formData.get("duration").trim(),
-  };
-  const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
-    {
-      method: request.method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(filmData),
-    }
-  );
-  if (!response.ok) {
-    // FIXME
+    const filmData = {
+      title: formData.get("title").trim(),
+      description: formData.get("description").trim(),
+      photo: formData.get("photo").trim(),
+      genre: formData.get("genre").trim(),
+      director: formData.get("director").trim(),
+      year: formData.get("year").trim(),
+      ageLimit: formData.get("ageLimit").trim(),
+      imdb: formData.get("imdb").trim(),
+      duration: formData.get("duration").trim(),
+    };
+    const response = await fetch(
+      `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
+      {
+        method: request.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(filmData),
+      }
+    );
+    return redirect("/films");
+  } catch (error) {
+    throw json({
+      title: "AN ERROR HAS OCCURRED!",
+      message: "Film couldn't edit!",
+    });
   }
-  return redirect("/films");
 }

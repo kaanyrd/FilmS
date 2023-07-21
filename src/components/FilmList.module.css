@@ -22,6 +22,7 @@
   -o-object-fit: cover;
   object-fit: cover;
   overflow: hidden;
+  background-color: #fff;
 }
 .img > img {
   transition: all 0.2s ease-in-out;

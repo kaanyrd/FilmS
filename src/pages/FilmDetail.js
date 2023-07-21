@@ -6,6 +6,7 @@ import {
   redirect,
   useSubmit,
   useNavigate,
+  json,
 } from "react-router-dom";
 import classes from "./FilmDetail.module.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -43,7 +44,7 @@ function FilmDetail() {
         {modeling &&
           ReactDOM.createPortal(
             <ConfirmModeling
-              filmName={data.title}
+              filmName={data?.title}
               modeling={modeling}
               setModeling={setModeling}
               setRemovingData={setRemovingData}
@@ -55,13 +56,13 @@ function FilmDetail() {
       <div className={classes.content}>
         <div className={classes.topContent}>
           <div className={classes.title}>
-            <h1>{data.title}</h1>
-            <p>({data.year})</p>
+            <h1>{data?.title}</h1>
+            <p>({data?.year})</p>
           </div>
           <div className={classes.imgSide}>
             <img
               className={classes.imgSelf}
-              src={`${data.photo ? data.photo : noMovieIcon}`}
+              src={`${data?.photo ? data.photo : noMovieIcon}`}
               alt="img"
             />
             <span className={classes.iconSide}>
@@ -79,16 +80,16 @@ function FilmDetail() {
         <div className={classes.bottomContent}>
           <div className={classes.topInfo}>
             <p className={classes.imdbSide}>
-              Imdb: {data.imdb} <StarIcon className={classes.star} />
+              Imdb: {data?.imdb} <StarIcon className={classes.star} />
             </p>
             <span>/</span>
             <p className={classes.hourSide}>
               <span>
-                {Math.floor(data.duration / 60)}h
+                {Math.floor(data?.duration / 60)}h
                 {`${
-                  data.duration % 60 === 0
+                  data?.duration % 60 === 0
                     ? ""
-                    : ` - ${data.duration % 60} mins`
+                    : ` - ${data?.duration % 60} mins`
                 }`}
               </span>
               <QueryBuilderIcon />
@@ -97,19 +98,19 @@ function FilmDetail() {
           <div className={classes.bottomInfo}>
             <h4 className={classes.genre}>
               <p>Genre</p>
-              <p>{data.genre}</p>
+              <p>{data?.genre}</p>
             </h4>
             <h4 className={classes.director}>
               <p>Director</p>
-              <p>{data.director}</p>
+              <p>{data?.director}</p>
             </h4>
             <h4 className={classes.age}>
               <p>Age Limit</p>
-              <p>+{data.ageLimit}</p>
+              <p>+{data?.ageLimit}</p>
             </h4>
             <div className={classes.description}>
               <h3>Description</h3>
-              <h3>{`${data.description}`}</h3>
+              <h3>{`${data?.description}`}</h3>
             </div>
           </div>
 
@@ -127,29 +128,35 @@ function FilmDetail() {
 export default FilmDetail;
 // FIXME
 export async function loader({ request, params }) {
-  const id = params.filmId;
-  console.log(id);
-  const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`
-  );
-  if (!response.ok) {
-    // FIXME
-  } else {
+  try {
+    const id = params.filmId;
+    const response = await fetch(
+      `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`
+    );
     const resData = await response.json();
     return resData;
+  } catch (error) {
+    throw json({
+      title: "AN ERROR HAS OCCURRED!",
+      message: "Film detail coudln't find.",
+    });
   }
 }
 
 export async function action({ request, params }) {
-  const id = params.filmId;
-  const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
-    {
-      method: request.method,
-    }
-  );
-  if (!response.ok) {
-    // FIXME
+  try {
+    const id = params.filmId;
+    const response = await fetch(
+      `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
+      {
+        method: request.method,
+      }
+    );
+    return redirect("/films");
+  } catch (error) {
+    throw json({
+      title: "AN ERROR HAS OCCURRED!",
+      message: "Film couldn't remove!",
+    });
   }
-  return redirect("/films");
 }
