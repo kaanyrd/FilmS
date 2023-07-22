@@ -1,20 +1,27 @@
 import FilmList from "../components/FilmList";
-import { json, useLoaderData } from "react-router-dom";
+import { Await, defer, json, useLoaderData } from "react-router-dom";
 import classes from "./Films.module.css";
+import { Suspense } from "react";
 
 function Films() {
   const data = useLoaderData();
 
   return (
-    <div className={classes.films}>
-      <FilmList films={data} />
-    </div>
+    <Suspense fallback={<h1 className={classes.information}>Loading...</h1>}>
+      <Await resolve={data.films}>
+        {(loadedFilms) => (
+          <div className={classes.films}>
+            <FilmList films={loadedFilms} />
+          </div>
+        )}
+      </Await>
+    </Suspense>
   );
 }
 
 export default Films;
 
-export async function loader() {
+export async function loadFilms() {
   try {
     const response = await fetch(
       `https://films-3c1db-default-rtdb.firebaseio.com/films.json`
@@ -35,4 +42,10 @@ export async function loader() {
       message: "Data couldn't fetched!",
     });
   }
+}
+
+export function loader() {
+  return defer({
+    films: loadFilms(),
+  });
 }
