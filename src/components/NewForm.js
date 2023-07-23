@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import { Form, json, redirect } from "react-router-dom";
+import { json, useFetcher } from "react-router-dom";
 import classes from "./NewForm.module.css";
 
 function NewForm() {
+  const fetcher = useFetcher();
+  let submitting = fetcher.state === "loading";
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [genre, setGenre] = useState("action");
+  const [year, setYear] = useState("");
+  const [age, setAge] = useState("");
+  const [director, setDirector] = useState("");
+  const [imdb, setImdb] = useState("");
+  const [minute, setMinute] = useState("");
 
   const descriptionHandler = (e) => {
     setDescription(e.target.value);
@@ -12,11 +21,48 @@ function NewForm() {
   const titleHandler = (e) => {
     setTitle(e.target.value);
   };
+  const photoHandler = (e) => {
+    setPhoto(e.target.value);
+  };
+  const genreHandler = (e) => {
+    setGenre(e.target.value);
+  };
+  const yearHandler = (e) => {
+    setYear(e.target.value);
+  };
+  const ageHandler = (e) => {
+    setAge(e.target.value);
+  };
+  const directorHandler = (e) => {
+    setDirector(e.target.value);
+  };
+  const imdbHandler = (e) => {
+    setImdb(e.target.value);
+  };
+  const minuteHandler = (e) => {
+    setMinute(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    setTitle("");
+    setDescription("");
+    setPhoto("");
+    setGenre("");
+    setImdb("");
+    setYear("");
+    setAge("");
+    setDirector("");
+    setMinute("");
+  };
 
   return (
     <div className={classes.form}>
       <h1>Add New Film</h1>
-      <Form method="post" className={classes.formContent}>
+      <fetcher.Form
+        method="post"
+        onSubmit={submitHandler}
+        className={classes.formContent}
+      >
         <div className={classes.formTop}>
           <div className={classes.filmDetails}>
             <div className={classes.formControl}>
@@ -36,6 +82,8 @@ function NewForm() {
                 onChange={titleHandler}
                 required
                 maxLength="30"
+                value={title}
+                disabled={submitting}
               />
             </div>
             <div className={classes.formControl}>
@@ -47,6 +95,9 @@ function NewForm() {
                 name="photo"
                 type="text"
                 placeholder="as URL"
+                value={photo}
+                onChange={photoHandler}
+                disabled={submitting}
                 // required
               />
             </div>
@@ -68,6 +119,8 @@ function NewForm() {
               placeholder="Story of film..."
               maxLength="200"
               required
+              value={description}
+              disabled={submitting}
             />
           </div>
         </div>
@@ -77,7 +130,14 @@ function NewForm() {
               <label htmlFor="genre">
                 <h3>Genre</h3>
               </label>
-              <select id="genre" name="genre" required defaultValue="action">
+              <select
+                id="genre"
+                name="genre"
+                required
+                value={genre}
+                onChange={genreHandler}
+                disabled={submitting}
+              >
                 <option value="kids">Kids</option>
                 <option value="drama">Drama</option>
                 <option value="action">Action</option>
@@ -96,7 +156,14 @@ function NewForm() {
               <label htmlFor="year">
                 <h3>Year</h3>
               </label>
-              <select id="year" name="year" required>
+              <select
+                id="year"
+                name="year"
+                required
+                value={year}
+                onChange={yearHandler}
+                disabled={submitting}
+              >
                 {Array.from({ length: 100 }, (_, index) => (
                   <option key={index} value={2023 - index}>
                     {2023 - index}
@@ -108,7 +175,14 @@ function NewForm() {
               <label htmlFor="ageLimit">
                 <h3>Age Limit</h3>
               </label>
-              <select name="ageLimit" id="ageLimit" defaultValue="18" required>
+              <select
+                name="ageLimit"
+                id="ageLimit"
+                required
+                value={age}
+                onChange={ageHandler}
+                disabled={submitting}
+              >
                 <option value="3">+3</option>
                 <option value="7">+7</option>
                 <option value="13">+13</option>
@@ -128,6 +202,9 @@ function NewForm() {
                 id="director"
                 name="director"
                 type="text"
+                value={director}
+                onChange={directorHandler}
+                disabled={submitting}
               />
             </div>
             <div className={classes.filmDetailControl}>
@@ -145,6 +222,9 @@ function NewForm() {
                     step="0.1"
                     placeholder="(1-10)"
                     required
+                    value={imdb}
+                    onChange={imdbHandler}
+                    disabled={submitting}
                   />
                 </div>
                 <div className={`${classes.formControl} ${classes.bottomInfo}`}>
@@ -159,6 +239,9 @@ function NewForm() {
                     max="900"
                     required
                     placeholder="As min."
+                    value={minute}
+                    onChange={minuteHandler}
+                    disabled={submitting}
                   />
                 </div>
               </div>
@@ -167,9 +250,11 @@ function NewForm() {
         </div>
 
         <div className={classes.submitBtn}>
-          <button type="submit">Add Film</button>
+          <button disabled={submitting} onSubmit={submitHandler} type="submit">
+            {submitting ? "Submitting..." : "Add Film"}
+          </button>
         </div>
-      </Form>
+      </fetcher.Form>
     </div>
   );
 }
@@ -199,8 +284,8 @@ export async function action({ request, params }) {
       },
       body: JSON.stringify(filmData),
     });
-
-    return redirect("/films");
+    return true;
+    // return redirect("/films");
   } catch (error) {
     throw json({
       title: "AN ERROR HAS OCCURRED!",
