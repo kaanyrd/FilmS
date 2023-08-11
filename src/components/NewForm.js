@@ -222,7 +222,7 @@ export async function action({ request, params }) {
       duration: formData.get("duration").trim(),
     };
 
-    await fetch(`https://films-3c1db-default-rtdb.firebaseio.com/films.json`, {
+    await fetch(`https://films-9edd6-default-rtdb.firebaseio.com/films.json`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

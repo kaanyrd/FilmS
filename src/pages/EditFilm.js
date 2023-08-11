@@ -253,7 +253,7 @@ export default EditFilm;
 export async function loader({ request, params }) {
   const id = params.filmId;
   const response = await fetch(
-    `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`
+    `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`
   );
 
   if (!response.ok) {
@@ -281,7 +281,7 @@ export async function action({ request, params }) {
       duration: formData.get("duration").trim(),
     };
     await fetch(
-      `https://films-3c1db-default-rtdb.firebaseio.com/films/${id}.json`,
+      `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`,
       {
         method: request.method,
         headers: {
