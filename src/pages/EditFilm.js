@@ -281,7 +281,7 @@ export async function action({ request, params }) {
       duration: formData.get("duration").trim(),
     };
     await fetch(
-      `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`,
+      `https://films-20575-default-rtdb.firebaseio.com/films/${id}.json`,
       {
         method: request.method,
         headers: {

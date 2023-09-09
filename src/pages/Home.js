@@ -25,7 +25,7 @@ export default Home;
 export async function loader() {
   try {
     const response = await fetch(
-      `https://films-9edd6-default-rtdb.firebaseio.com//films.json`
+      `https://films-20575-default-rtdb.firebaseio.com/films.json`
     );
     const data = await response.json();
     const films = [];

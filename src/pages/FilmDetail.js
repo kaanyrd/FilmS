@@ -141,7 +141,7 @@ export async function loader({ request, params }) {
   try {
     const id = params.filmId;
     const response = await fetch(
-      `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`
+      `https://films-20575-default-rtdb.firebaseio.com/films/${id}.json`
     );
     const resData = await response.json();
     return resData;
