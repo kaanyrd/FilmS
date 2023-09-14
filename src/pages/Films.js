@@ -24,18 +24,10 @@ export default Films;
 export async function loadFilms() {
   try {
     const response = await fetch(
-      `https://films-20575-default-rtdb.firebaseio.com/films.json`
+      `https://api-generator.retool.com/lR3PpE/data`
     );
     const data = await response.json();
-    const films = [];
-
-    for (const id in data) {
-      films.push({
-        id: id.toString(),
-        ...data[id],
-      });
-    }
-    return films.reverse();
+    return data.reverse();
   } catch (error) {
     throw json({
       title: "AN ERROR HAS OCCURRED!",

@@ -9,7 +9,6 @@ function Home() {
   useEffect(() => {
     setLastFilms(data.slice(-3).reverse());
   }, [data]);
-  // console.log(lastFilms);
 
   return (
     <div className={classes.banner}>
@@ -25,18 +24,10 @@ export default Home;
 export async function loader() {
   try {
     const response = await fetch(
-      `https://films-20575-default-rtdb.firebaseio.com/films.json`
+      `https://api-generator.retool.com/lR3PpE/data`
     );
     const data = await response.json();
-    const films = [];
-
-    for (const id in data) {
-      films.push({
-        id: id.toString(),
-        ...data[id],
-      });
-    }
-    return films;
+    return data;
   } catch (error) {
     throw json({
       title: "AN ERROR HAS OCCURRED!",

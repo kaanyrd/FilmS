@@ -90,7 +90,7 @@ function FilmList({ films }) {
             <ul className={classes.list}>
               {currentFilms?.map((film) => (
                 <li key={film.id}>
-                  <Link to={film.id}>
+                  <Link to={film.id.toString()}>
                     <div className={classes.film}>
                       <h4 className={classes.age}>+{film.ageLimit}</h4>
                       <h2 className={classes.filmTitle}>{film.title}</h2>

@@ -33,7 +33,6 @@ function EditFilm() {
 
   const photoChangeHandler = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
     setPhoto(e.target.value);
   };
 
@@ -47,8 +46,7 @@ function EditFilm() {
   const goBack = () => {
     navigate(`../${params.filmId}`);
   };
-  // console.log(photo);
-  // console.log(data);
+
   return (
     <div>
       <div className={classes.form}>
@@ -253,7 +251,7 @@ export default EditFilm;
 export async function loader({ request, params }) {
   const id = params.filmId;
   const response = await fetch(
-    `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`
+    `https://api-generator.retool.com/lR3PpE/data/${id}`
   );
 
   if (!response.ok) {
@@ -280,16 +278,13 @@ export async function action({ request, params }) {
       imdb: formData.get("imdb").trim(),
       duration: formData.get("duration").trim(),
     };
-    await fetch(
-      `https://films-20575-default-rtdb.firebaseio.com/films/${id}.json`,
-      {
-        method: request.method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(filmData),
-      }
-    );
+    await fetch(`https://api-generator.retool.com/lR3PpE/data/${id}`, {
+      method: request.method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(filmData),
+    });
     return redirect("/films");
   } catch (error) {
     throw json({

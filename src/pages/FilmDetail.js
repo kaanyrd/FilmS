@@ -22,7 +22,6 @@ function FilmDetail() {
   const submit = useSubmit();
   const [modeling, setModeling] = useState(false);
   const [removingData, setRemovingData] = useState(false);
-
   const onModelingHandler = () => {
     setModeling(true);
   };
@@ -136,12 +135,11 @@ function FilmDetail() {
 }
 
 export default FilmDetail;
-// FIXME
 export async function loader({ request, params }) {
   try {
     const id = params.filmId;
     const response = await fetch(
-      `https://films-20575-default-rtdb.firebaseio.com/films/${id}.json`
+      `https://api-generator.retool.com/lR3PpE/data/${id}`
     );
     const resData = await response.json();
     return resData;
@@ -156,12 +154,9 @@ export async function loader({ request, params }) {
 export async function action({ request, params }) {
   try {
     const id = params.filmId;
-    await fetch(
-      `https://films-9edd6-default-rtdb.firebaseio.com/films/${id}.json`,
-      {
-        method: request.method,
-      }
-    );
+    await fetch(`https://api-generator.retool.com/lR3PpE/data/${id}`, {
+      method: request.method,
+    });
     return redirect("/films");
   } catch (error) {
     throw json({
