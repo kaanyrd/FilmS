@@ -8,6 +8,9 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import EmailIcon from "@mui/icons-material/Email";
 
 function Footer() {
+  const date = new Date();
+  const year = date.getFullYear();
+
   return (
     <div className={classes.footer}>
       <div className={classes.footerContent}>
@@ -20,7 +23,7 @@ function Footer() {
             <span>
               <CopyrightIcon />
             </span>
-            <p>2023</p>
+            <p>{year}</p>
           </h5>
         </div>
         <div className={classes.socialSide}>
